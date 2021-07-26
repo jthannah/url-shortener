@@ -65,16 +65,16 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from 'vue'
+import {defineComponent, Ref, ref} from 'vue'
 import Result from '@/components/result.vue'
-import ShortUrl from '@/api/short-url'
+import ShortUrlApi, { ShortUrl } from '../api/short-url'
 
 export default defineComponent({
   name: 'ShortenUrlForm',
   components: { Result },
   setup() {
     const longUrl = ref('')
-    const shortenedUrlResult = ref(undefined)
+    const shortenedUrlResult: Ref<ShortUrl | undefined> = ref(undefined)
     const newShortUrl = ref(false)
 
     const handleFormSubmit = async () => {
@@ -82,13 +82,13 @@ export default defineComponent({
       newShortUrl.value = false
 
       // check if url has already been shortened
-      const alreadyShortened = await ShortUrl.getShortUrl(longUrl.value)
+      const alreadyShortened = await ShortUrlApi.getShortUrl(longUrl.value)
 
-      if (alreadyShortened !== undefined) {
+      if (alreadyShortened) {
         // show an error/message with already shortened information
         shortenedUrlResult.value = alreadyShortened
       } else {
-        await ShortUrl.saveShortUrl(longUrl.value).then((response: ShortUrl) => {
+        await ShortUrlApi.saveShortUrl(longUrl.value).then((response: ShortUrl) => {
           shortenedUrlResult.value = response
           newShortUrl.value = true
         })

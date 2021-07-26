@@ -1,6 +1,6 @@
 <template>
   <div class="p-5 text-center">
-    <span v-if="keyNotFound">Hang on! We'll redirect you momentarily!</span>
+    <span v-if="lookingForKeyMatch">Hang on! We'll redirect you momentarily!</span>
     <div v-else class="flex flex-col items-center space-y-5">
       <EmojiSadIcon class="text-orange-default w-12 h-12" />
       <p>Sorry! We didn't find an entry matching this short url.</p>
@@ -15,8 +15,8 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
-import ShortUrl from '@/api/short-url'
+import {defineComponent, ref} from 'vue'
+import ShortUrlApi, { ShortUrl } from '../api/short-url'
 import Card from '@/components/card.vue'
 import { EmojiSadIcon } from '@heroicons/vue/outline'
 
@@ -34,11 +34,15 @@ export default defineComponent({
     },
   },
   setup(props) {
-    ShortUrl.getLongUrl(props.shortUrl)
+    const lookingForKeyMatch = ref(true)
+
+    ShortUrlApi.getLongUrl(props.shortUrl)
       .then((response: ShortUrl) => {
-        window.location = response.original
+        window.location.href = response.original
       })
-      .catch(() => {})
+      .catch(() => {lookingForKeyMatch.value = false})
+
+    return { lookingForKeyMatch }
   },
 })
 </script>

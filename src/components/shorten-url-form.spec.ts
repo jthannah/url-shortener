@@ -1,11 +1,11 @@
 import '@testing-library/jest-dom'
 import { render } from '@testing-library/vue'
 import userEvent from '@testing-library/user-event'
-import ShortUrlApi, { ShortUrl } from '@/api/short-url'
+import ShortUrlApi, { ShortUrl } from '../api/short-url'
 import ShortenUrlForm from './shorten-url-form.vue'
 import { nextTick } from 'vue'
 
-jest.mock('@/api/short-url')
+jest.mock('../api/short-url')
 const mockedShortUrlApi = ShortUrlApi as jest.Mocked<typeof ShortUrlApi>
 
 const fakeShortUrl: ShortUrl = {

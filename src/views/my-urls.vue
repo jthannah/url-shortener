@@ -3,7 +3,7 @@
     <ul v-if="shortUrls.length" class="sm:grid-cols-2 grid grid-cols-1 gap-6">
       <li
         v-for="shortUrl in shortUrls"
-        :key="shortUrls.url"
+        :key="shortUrl.key"
         class="col-span-1 bg-white divide-y divide-gray-200 rounded-lg shadow"
       >
         <Card :shortUrl="shortUrl" @delete="deleteShortenedUrl" />
@@ -22,22 +22,22 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from 'vue'
-import ShortUrl from '@/api/short-url'
+import { defineComponent, Ref, ref } from 'vue'
+import ShortUrlApi, {ShortUrl} from '../api/short-url'
 import Card from '@/components/card.vue'
 
 export default defineComponent({
   name: 'MyUrls',
   components: { Card },
   setup() {
-    const shortUrls = ref<ShortUrl[]>([])
+    const shortUrls: Ref<ShortUrl[]> = ref<ShortUrl[]>([])
 
-    ShortUrl.getAllShortUrls().then((response: ShortUrl[]) => {
+    ShortUrlApi.getAllShortUrls().then((response: ShortUrl[]) => {
       shortUrls.value = response
     })
 
     const deleteShortenedUrl = (shortUrlKey: string) => {
-      ShortUrl.deleteShortUrl(shortUrlKey).then((response: ShortUrl[]) => {
+      ShortUrlApi.deleteShortUrl(shortUrlKey).then((response: ShortUrl[]) => {
         shortUrls.value = response
       })
     }

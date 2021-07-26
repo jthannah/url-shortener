@@ -23,22 +23,22 @@ export default {
     })
   },
 
-  getShortUrl(longUrl: string): Promise<ShortUrl | undefined> {
+  getShortUrl(longUrl: string): Promise<ShortUrl> {
     return new Promise<ShortUrl>((resolve, reject) => {
       const shortUrlDb = JSON.parse(localStorage.getItem('shortUrlDb') ?? '[]')
       resolve(shortUrlDb.find((record: ShortUrl) => record.original === longUrl))
     })
   },
 
-  getLongUrl(shortUrlKey: string): Promise<ShortUrl | undefined> {
+  getLongUrl(shortUrlKey: string): Promise<ShortUrl> {
     return new Promise<ShortUrl>((resolve, reject) => {
       const shortUrlDb = JSON.parse(localStorage.getItem('shortUrlDb') ?? '[]')
       resolve(shortUrlDb.find((record: ShortUrl) => record.key === shortUrlKey))
     })
   },
 
-  deleteShortUrl(shortUrlKey: string): Promise<ShortUrl[] | undefined> {
-    return new Promise<ShortUrl>((resolve, reject) => {
+  deleteShortUrl(shortUrlKey: string): Promise<ShortUrl[]> {
+    return new Promise<ShortUrl[]>((resolve, reject) => {
       const shortUrlDb = JSON.parse(localStorage.getItem('shortUrlDb') ?? '[]')
       const filteredShortUrlDb = shortUrlDb.filter((record: ShortUrl) => record.key !== shortUrlKey)
 

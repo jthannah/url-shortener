@@ -15,7 +15,7 @@
 <script lang="ts">
 import { defineComponent, PropType } from 'vue'
 import { EmojiHappyIcon } from '@heroicons/vue/outline'
-import { ShortUrl } from '@/api/short-url'
+import { ShortUrl } from '../api/short-url'
 
 export default defineComponent({
   name: 'Result',

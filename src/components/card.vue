@@ -27,7 +27,7 @@
 <script lang="ts">
 import { defineComponent, PropType } from 'vue'
 import { LinkIcon, TrashIcon } from '@heroicons/vue/outline'
-import { ShortUrl } from '@/api/short-url'
+import { ShortUrl } from '../api/short-url'
 
 export default defineComponent({
   components: {

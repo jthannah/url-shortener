@@ -2,7 +2,7 @@ import { render } from '@testing-library/vue'
 import '@testing-library/jest-dom'
 import userEvent from '@testing-library/user-event'
 import Card from '@/components/card.vue'
-import { ShortUrl } from '@/api/short-url'
+import { ShortUrl } from '../api/short-url'
 
 const fakeShortUrl: ShortUrl = {
   key: 'r@nd0mStr1ng',

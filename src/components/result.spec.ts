@@ -1,7 +1,7 @@
 import { render } from '@testing-library/vue'
 import '@testing-library/jest-dom'
 import Result from '@/components/result.vue'
-import { ShortUrl } from '@/api/short-url'
+import { ShortUrl } from '../api/short-url'
 
 const fakeShortUrl: ShortUrl = {
   key: 'r@nd0mStr1ng',
