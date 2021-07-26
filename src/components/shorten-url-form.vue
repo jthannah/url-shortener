@@ -1,9 +1,10 @@
 <template>
-  <h1 class="text-lg">Enter url to shorten!</h1>
+  <h1 class="text-lg" id="form-heading">Enter url to shorten!</h1>
   <form class="flex flex-wrap py-5 space-x-8" @submit.prevent="handleFormSubmit">
     <input
       type="url"
       name="url"
+      aria-labelledby="form-heading"
       v-model="longUrl"
       class="
         rounded-r-md
