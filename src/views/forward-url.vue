@@ -24,11 +24,7 @@ export default defineComponent({
   name: 'MyUrls',
   components: { Card, EmojiSadIcon },
   props: {
-    userId: {
-      required: true,
-      type: Number,
-    },
-    shortUrl: {
+    shortUrlKey: {
       required: true,
       type: String,
     },
@@ -36,7 +32,7 @@ export default defineComponent({
   setup(props) {
     const lookingForKeyMatch = ref(true)
 
-    ShortUrlApi.getLongUrl(props.shortUrl)
+    ShortUrlApi.getLongUrl(props.shortUrlKey)
       .then((response: ShortUrl) => {
         window.location.href = response.original
       })

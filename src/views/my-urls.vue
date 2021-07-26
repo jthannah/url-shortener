@@ -10,7 +10,7 @@
       </li>
     </ul>
     <div v-else class="flex flex-col items-center space-y-5">
-      <p>You haven't shortened any URL's yet! to get started click the button below!</p>
+      <p>You haven't shortened any URL's yet! To get started click the button below!</p>
       <router-link
         :to="{ name: 'Home' }"
         class="bg-orange-default hover:bg-orange-dark px-5 py-3 text-white transition-colors rounded-md"

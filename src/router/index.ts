@@ -15,7 +15,7 @@ const routes = [
     component: MyUrls,
   },
   {
-    path: '/:shortUrl',
+    path: '/:shortUrlKey',
     name: 'forwardUrl',
     component: ForwardUrl,
     props: true
