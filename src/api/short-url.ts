@@ -1,3 +1,6 @@
+import instance from './api-axios'
+
+// TODO: should be set by environment variable
 const url_base = 'http://localhost:3000'
 
 export interface ShortUrl {
@@ -17,6 +20,10 @@ function generateRandomString(): string {
 
 export default {
   getAllShortUrls(): Promise<ShortUrl[]> {
+    return instance.get('/jhannah').then((response) => {
+      return response
+    })
+
     return new Promise<ShortUrl[]>((resolve, reject) => {
       const shortUrlDb = JSON.parse(localStorage.getItem('shortUrlDb') ?? '[]')
       resolve(shortUrlDb)
@@ -48,6 +55,18 @@ export default {
   },
 
   saveShortUrl(longUrl: string): Promise<ShortUrl> {
+    const key = generateRandomString()
+
+      const shortUrl = {
+        key: key,
+        original: longUrl,
+        url: url_base + '/' + key,
+        created: new Date().toISOString(),
+      }
+    return instance.put('/jhannah', shortUrl).then((response) => {
+      return response
+    })
+
     return new Promise((resolve, reject) => {
       const key = generateRandomString()
 
