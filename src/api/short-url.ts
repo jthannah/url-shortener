@@ -21,7 +21,7 @@ function generateRandomString(): string {
 export default {
   getAllShortUrls(): Promise<ShortUrl[]> {
     return instance.get('/jhannah').then((response) => {
-      return response
+      return response as unknown as ShortUrl[]
     })
 
     return new Promise<ShortUrl[]>((resolve, reject) => {
@@ -64,7 +64,7 @@ export default {
         created: new Date().toISOString(),
       }
     return instance.put('/jhannah', shortUrl).then((response) => {
-      return response
+      return response as unknown as ShortUrl
     })
 
     return new Promise((resolve, reject) => {
