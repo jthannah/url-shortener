@@ -1,4 +1,4 @@
-const url_base = ''
+const url_base = window.location.origin
 
 export interface ShortUrl {
   key: string
