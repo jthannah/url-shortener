@@ -20,7 +20,7 @@ function generateRandomString(): string {
 
 export default {
   getAllShortUrls(): Promise<ShortUrl[]> {
-    return instance.get('/jhannah').then((response) => {
+    return instance.get('/getAllShortUrls').then((response) => {
       return response as unknown as ShortUrl[]
     })
 
@@ -63,7 +63,7 @@ export default {
         url: url_base + '/' + key,
         created: new Date().toISOString(),
       }
-    return instance.put('/jhannah', shortUrl).then((response) => {
+    return instance.post('/saveShortUrl', shortUrl).then((response) => {
       return response as unknown as ShortUrl
     })
 
