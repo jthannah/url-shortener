@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const instance = axios.create({
-  baseURL: '/functions',
+  baseURL: '/.netlify/functions',
 })
 
 // Will run for every Axios request made using this instance
