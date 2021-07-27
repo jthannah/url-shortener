@@ -6,6 +6,7 @@
       name="url"
       aria-labelledby="form-heading"
       v-model="longUrl"
+      required
       class="
         rounded-r-md
         focus:ring-orange-light focus:border-orange-default
