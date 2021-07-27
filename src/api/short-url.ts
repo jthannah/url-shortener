@@ -1,7 +1,7 @@
 import instance from './api-axios'
 
 // TODO: should be set by environment variable
-const url_base = 'http://localhost:3000'
+const url_base = ''
 
 export interface ShortUrl {
   key: string
